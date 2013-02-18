@@ -62,11 +62,20 @@ jQuery(document).ready(function () {
                     
                 </div>
             </div>
+            
             <div class="field">
                 <label for="dropbox-tags">Tags</label>
                 <div class="inputs">
                     <?php echo $this->formText('dropbox-tags', null, array('class' => 'textinput')); ?>
                     <p class="explanation">Separate tags with <?php echo get_option('tag_delimiter'); ?></p>
+                </div>
+            </div>
+            
+            <div class="field">
+                <label for="dropbox-date">Date (Year)</label>
+                <div class="inputs">
+                    <?php echo $this->formText('dropbox-date', null, array('class' => 'textinput')); ?>
+                    <p class="explanation">Date: Year (YYYY format)</p>
                 </div>
             </div>
         </fieldset>

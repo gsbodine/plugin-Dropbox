@@ -70,7 +70,19 @@ class Dropbox_IndexController extends Omeka_Controller_AbstractActionController
                                         'collection_id'     => $_POST['dropbox-collection-id'],
                                         'tags'              => $_POST['dropbox-tags']
                                      );
-                $elementTexts = array('Dublin Core' => array('Title' => array(array('text' => $fileName, 'html' => false))));
+                $elementTexts = array(
+                    'Dublin Core' => array(
+                        'Title' => array(array('text' => $fileName, 'html' => false)),
+                        // Added MBDA shortcut: hardcoded entries that are the same for every ingested element:
+                        'Identifier' => array(array('text' => $newOmekaId, 'html' => false)),
+                	'Source' => array(array('text' => 'MB Collection', 'html' => false)),
+                	'Publisher' => array(array('text' => 'Berry College Memorial Library', 'html' => false)),
+                	'Format' => array(array('text' => 'image-jpeg', 'html' => false)),
+                	'Language' => array(array('text' => 'en-US', 'html' => false)),
+                	'Coverage' => array(array('text' => 'Mount Berry, Georgia', 'html' => false)),
+                	'Rights' => array(array('text' => 'Creative Commons, non-commercial, attribution, no derivatives','html' => false)),
+                        'Date' => array(array('text' => $_POST['dropbox-date'],'html' => false))
+                        ));
                 $fileMetadata = array('file_transfer_type' => 'Filesystem', 'file_ingest_options' => array('ignore_invalid_files'=> false),'files' => array($filePath));
                 $item = insert_item($itemMetadata, $elementTexts, $fileMetadata);
                 release_object($item);
