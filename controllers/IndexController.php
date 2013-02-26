@@ -70,6 +70,10 @@ class Dropbox_IndexController extends Omeka_Controller_AbstractActionController
                                         'collection_id'     => $_POST['dropbox-collection-id'],
                                         'tags'              => $_POST['dropbox-tags']
                                      );
+                
+                //strips the extension so that the filename can be used as the identifier
+                $newOmekaId = str_replace(array(".jpg",".png",".tif"),"", $fileName);
+                
                 $elementTexts = array(
                     'Dublin Core' => array(
                         'Title' => array(array('text' => $fileName, 'html' => false)),
